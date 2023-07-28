@@ -1,0 +1,61 @@
+# Shape Classification with Pygame
+
+This repository contains code for a simple shape classification application built using Pygame and TensorFlow/Keras. The application allows you to draw a shape on the window using your mouse, and it will predict the shape you drew.
+
+## Requirements
+
+To run this code, you need the following dependencies:
+
+- Python 3.x
+- TensorFlow
+- Keras
+- NumPy
+- Pillow (PIL)
+- Pygame
+
+You can install the required libraries using `pip`:
+
+```bash
+pip install tensorflow keras numpy pillow pygame
+```
+
+## Usage
+
+1. Clone this repository to your local machine or download the `shape_generation.py` file.
+
+2. Make sure you have your trained image classification model ready. The current implementation assumes the model is saved as `'my_image_classifier.keras'`. If your model is named differently, make sure to update the filename accordingly in the `load_model` function.
+
+3. Run the `shape_generation.py` script:
+
+```bash
+python shape_generation.py
+```
+
+4. The Pygame window will open. You can draw shapes using your mouse.
+
+5. Press the **Spacebar** to clear the drawing canvas.
+
+6. When you release the left mouse button after drawing a shape, the application will predict the shape and display the predicted class label along with its probability on the top of the window.
+
+## How It Works
+
+1. The script loads the trained image classification model using Keras.
+
+2. The `preprocess_image` function converts the drawn image into the required format for the model and resizes it to (64, 64) pixels.
+
+3. The `predict_image` function takes the drawn image, preprocesses it, and feeds it to the loaded model to get the prediction.
+
+4. The main game loop of Pygame captures the mouse events and allows you to draw on the window. The drawn image is then converted to a Pillow (PIL) image and passed to the `predict_image` function to get the shape prediction.
+
+5. The predicted shape class label and its probability are displayed on the top of the window using the `draw_text` function.
+
+## Customization
+
+You can modify the following parts of the code to suit your requirements:
+
+- Replace `'my_image_classifier.keras'` with the filename of your own trained model in the `load_model` function.
+
+- If your classification model is designed to predict more or fewer classes, update the `class_labels` list accordingly in the main game loop.
+
+- You can customize the window dimensions and other Pygame settings as needed.
+
